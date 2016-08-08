@@ -1,0 +1,28 @@
+
+# target audio file
+:file:    "Full_Album.wav"
+
+# artist name
+:artist:  "Artist Name"
+
+# album title
+:album:   "Album Name"
+
+
+# track name and track time
+# split the track of a file at a specified time.
+# "time" is the elapsed time from "00:00:00"
+:track:
+  - :title: "track title 1"
+    :time:  "00:09:16"
+
+  - :title: "track title 2"
+    :time:  "00:20:33"
+
+  - :title: "track title 3"
+    :time:  "00:31:40"
+
+  - :title: "track title 4"
+    :time:  "00:41:20"
+
+

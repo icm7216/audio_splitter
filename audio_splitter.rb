@@ -1,32 +1,30 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-# ////////////////////////////////////////////
-# input file name
-input_file = "Full_Album.wav"
 
-# metadata
-artist = "Artist Name"
-album = "Album Name"
+# Split the audio file at a specified time.
+# Add metadata, convert to MP3.
 
-track_title = [
- "track title 1",
- "track title 2",
- "track title 3",
- "track title 4"
-]
+require 'yaml'
+meta_file = "audio_splitter.yaml"
 
-# split the track of a file at a specified time.
-# time is the elapsed time from "00:00:00".
-track_time = [
- "00:09:16",
- "00:20:33",
- "00:31:40",
- "00:41:20"
-]
-# ////////////////////////////////////////////
+# read metadata from YAML
+meta = YAML.load_file(meta_file)
+ 
+# set metadata item
+input_file = "#{meta[:file]}"
+artist = "#{meta[:artist]}"
+album = "#{meta[:album]}"
+track_title = []
+track_time = []
+
+meta[:track].each do |track|
+  track_title << "#{track[:title]}"
+  track_time << "#{track[:time]}"
+end
 
 
+# processing for ffmpeg metadata
 seek_pos = "00:00:00"
 
 track_title.each_with_index do |title, i|
